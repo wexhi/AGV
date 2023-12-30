@@ -1,7 +1,10 @@
 >>> cc
 
-
+".\..\User\Task\Shoot_task.c", line 102: Warning:  #177-D: function "bay_control" was declared but never referenced
+  static void bay_control(void)
+              ^
+.\..\User\Task\Shoot_task.c: 1 warning, 0 errors
 
 >>> ld
 
-Program Size: Code=33804 RO-data=1456 RW-data=444 ZI-data=38116  
+Program Size: Code=33772 RO-data=1456 RW-data=444 ZI-data=38116  

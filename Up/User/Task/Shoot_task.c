@@ -4,6 +4,8 @@
 #include "exchange.h"
 #include "drv_can.h"
 
+#define FRIC_SPEED 5000
+
 shooter_t shooter; // 发射机构信息结构体
 // 电机0为拨盘电机，电机1、2为摩擦轮电机，电机3原为弹舱电机，现为备用电机
 
@@ -18,6 +20,7 @@ static void shooter_current_given(); // 给电流
 
 void Shoot_task(void const *pvParameters)
 {
+    osDelay(3000);
     Shooter_Inint();
     for (;;)
     {
@@ -32,7 +35,7 @@ static void Shooter_Inint(void)
 {
     // 初始化pid参数
     shooter.pid_dial_para[0] = 20, shooter.pid_dial_para[1] = 0, shooter.pid_dial_para[2] = 0;
-    shooter.pid_friction_para[0] = 30, shooter.pid_friction_para[1] = 0.1, shooter.pid_friction_para[2] = 0;
+    shooter.pid_friction_para[0] = 30, shooter.pid_friction_para[1] = 0, shooter.pid_friction_para[2] = 0;
     shooter.pid_bay_para[0] = 10, shooter.pid_bay_para[1] = 0, shooter.pid_bay_para[2] = 0;
 
     // 初始化pid结构体
@@ -49,18 +52,20 @@ static void Shooter_Inint(void)
 // 模式选择
 static void model_choice(void)
 {
-    bay_control();
+    // bay_control();
+    friction_control();
+    // shooter.dial_speed_target = -2000;
     // 取消注释开始发射
     if (rc_ctrl.rc.s[1] == 3 || rc_ctrl.rc.s[1] == 1)
     {
         // 发射
-        friction_control();
+        // friction_control();
         dial_control();
     }
     else
     {
-        shooter.friction_speed_target[0] = 0;
-        shooter.friction_speed_target[1] = 0;
+        // shooter.friction_speed_target[0] = 0;
+        // shooter.friction_speed_target[1] = 0;
         shooter.dial_speed_target = 0;
         shooter.bay_speed_target = 0;
         // 停止
@@ -89,8 +94,8 @@ static void dial_control(void)
 // 摩擦轮电机控制
 static void friction_control(void)
 {
-    shooter.friction_speed_target[0] = -8000;
-    shooter.friction_speed_target[1] = 8000;
+    shooter.friction_speed_target[0] = FRIC_SPEED;
+    shooter.friction_speed_target[1] = -FRIC_SPEED;
 }
 
 // 弹舱电机控制
