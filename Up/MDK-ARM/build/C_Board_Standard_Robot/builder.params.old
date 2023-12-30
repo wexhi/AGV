@@ -7,7 +7,7 @@
     "buildMode": "fast|multhread",
     "showRepathOnLog": true,
     "threadNum": 16,
-    "rootDir": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM",
+    "rootDir": "c:\\Users\\14775\\Desktop\\study\\robomaster\\AGV\\Up\\MDK-ARM",
     "dumpPath": "build\\C_Board_Standard_Robot",
     "outDir": "build\\C_Board_Standard_Robot",
     "ram": 131072,
@@ -148,20 +148,20 @@
             "ro-base": "0x08000000",
             "rw-base": "0x20000000",
             "link-scatter": [
-                "\"c:/Users/14775/Desktop/study/robomaster/Omni/Up/MDK-ARM/build/C_Board_Standard_Robot/UP.sct\""
+                "\"c:/Users/14775/Desktop/study/robomaster/AGV/Up/MDK-ARM/build/C_Board_Standard_Robot/UP.sct\""
             ]
         }
     },
     "env": {
-        "workspaceFolder": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM",
+        "workspaceFolder": "c:\\Users\\14775\\Desktop\\study\\robomaster\\AGV\\Up\\MDK-ARM",
         "workspaceFolderBasename": "MDK-ARM",
-        "OutDir": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM\\build\\C_Board_Standard_Robot",
+        "OutDir": "c:\\Users\\14775\\Desktop\\study\\robomaster\\AGV\\Up\\MDK-ARM\\build\\C_Board_Standard_Robot",
         "OutDirRoot": "build",
         "OutDirBase": "build\\C_Board_Standard_Robot",
         "ProjectName": "UP",
         "ConfigName": "C_Board_Standard_Robot",
-        "ProjectRoot": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM",
-        "ExecutableName": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM\\build\\C_Board_Standard_Robot\\UP",
+        "ProjectRoot": "c:\\Users\\14775\\Desktop\\study\\robomaster\\AGV\\Up\\MDK-ARM",
+        "ExecutableName": "c:\\Users\\14775\\Desktop\\study\\robomaster\\AGV\\Up\\MDK-ARM\\build\\C_Board_Standard_Robot\\UP",
         "SYS_Platform": "win32",
         "SYS_DirSep": "\\",
         "SYS_DirSeparator": "\\",
@@ -177,6 +177,6 @@
         "global": "3ae75cac734e7a166338bea4b35ae2e0",
         "c/cpp-compiler": "3d14884587f8567240206b91bbb91847",
         "asm-compiler": "99914b932bd37a50b983c5e7c90ae93b",
-        "linker": "874a19087d5d8d2b06fa86c939bb8dd9"
+        "linker": "3872e5138b5550a0e5199ffacb3d8443"
     }
 }

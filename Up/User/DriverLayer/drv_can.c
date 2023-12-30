@@ -1,7 +1,7 @@
 #include "drv_can.h"
 #define SHOOTER_ID_START 0x201
 #define SHOOTER_ID_END 0x203
-#define GIMBAL_PITCH_ID 0x207
+#define GIMBAL_PITCH_ID 0x209
 #define POWERDATA_ID 0x211
 
 extern CAN_HandleTypeDef hcan1;
@@ -93,13 +93,14 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     {
       rc_ctrl.rc.ch[0] = ((rx_data[0] | (rx_data[1] << 8)) & 0x07ff) - 1024;                 //!< Channel 0  中值为1024，最大值1684，最小值364，波动范围：660
       rc_ctrl.rc.ch[1] = ((((rx_data[1] >> 3) & 0xff) | (rx_data[2] << 5)) & 0x07ff) - 1024; //!< Channel 1
-      rc_ctrl.rc.ch[2] = ((((rx_data[2] >> 6) & 0xff) | (rx_data[3] << 2) |          //!< Channel 2
-                          (rx_data[4] << 10)) &
-                         0x07ff)  - 1024;
+      rc_ctrl.rc.ch[2] = ((((rx_data[2] >> 6) & 0xff) | (rx_data[3] << 2) |                  //!< Channel 2
+                           (rx_data[4] << 10)) &
+                          0x07ff) -
+                         1024;
       rc_ctrl.rc.ch[3] = ((((rx_data[4] >> 1) & 0xff) | (rx_data[5] << 7)) & 0x07ff) - 1024; //!< Channel 3
-      rc_ctrl.rc.s[0] = ((rx_data[5] >> 4) & 0x0003);                               // 这是右
-      rc_ctrl.rc.s[1] = ((rx_data[5] >> 4) & 0x000C) >> 2;                          // 这才是左
-      rc_ctrl.mouse.x = rx_data[6] | (rx_data[7] << 8);                             //!< Mouse X axis
+      rc_ctrl.rc.s[0] = ((rx_data[5] >> 4) & 0x0003);                                        // 这是右
+      rc_ctrl.rc.s[1] = ((rx_data[5] >> 4) & 0x000C) >> 2;                                   // 这才是左
+      rc_ctrl.mouse.x = rx_data[6] | (rx_data[7] << 8);                                      //!< Mouse X axis
     }
     if (rx_header.StdId == 0x34) // 双C板传递遥控器信号的接口标识符
     {

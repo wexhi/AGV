@@ -31,7 +31,7 @@ void Gimbal_task(void const *pvParameters)
     for (;;)
     {
         RC_Pitch_control();
-        gimbal_current_give();
+        // gimbal_current_give();
         osDelay(1);
     }
 }
@@ -70,8 +70,7 @@ static void RC_Pitch_control()
         detel_calc2(&gimbal_Pitch.err_angle);
 
         gimbal_Pitch.speed_target = gimbal_Pitch_PID_cal(&gimbal_Pitch.pid_angle, 0, gimbal_Pitch.err_angle);
-
-        }
+    }
     else
     {
         gimbal_Pitch.speed_target = 0;
