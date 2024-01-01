@@ -4,7 +4,7 @@
 #include "exchange.h"
 #include "drv_can.h"
 
-#define FRIC_SPEED 2000
+#define FRIC_SPEED 6000
 
 shooter_t shooter; // 发射机构信息结构体
 // 电机0为拨盘电机，电机1、2为摩擦轮电机，电机3原为弹舱电机，现为备用电机
