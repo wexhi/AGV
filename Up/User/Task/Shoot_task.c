@@ -4,7 +4,7 @@
 #include "exchange.h"
 #include "drv_can.h"
 
-#define FRIC_SPEED 5000
+#define FRIC_SPEED 2000
 
 shooter_t shooter; // 发射机构信息结构体
 // 电机0为拨盘电机，电机1、2为摩擦轮电机，电机3原为弹舱电机，现为备用电机
@@ -54,7 +54,7 @@ static void model_choice(void)
 {
     // bay_control();
     friction_control();
-    // shooter.dial_speed_target = -2000;
+    shooter.dial_speed_target = -2000; // 只是为了方便才放在这，有遥控器后要删掉
     // 取消注释开始发射
     if (rc_ctrl.rc.s[1] == 3 || rc_ctrl.rc.s[1] == 1)
     {
@@ -66,7 +66,7 @@ static void model_choice(void)
     {
         // shooter.friction_speed_target[0] = 0;
         // shooter.friction_speed_target[1] = 0;
-        shooter.dial_speed_target = 0;
+        // shooter.dial_speed_target = 0;
         shooter.bay_speed_target = 0;
         // 停止
     }
